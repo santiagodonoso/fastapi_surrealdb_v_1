@@ -1,0 +1,45 @@
+{% include 'header.html' %}
+  
+<main>
+  <form onsubmit="create_user(); return false">
+    <div>
+      <label for="user_name">
+        Name ( min 2 max 20 characters )
+      </label>
+      <input name="user_name" id="user_name" type="text">
+    </div>
+    <div>
+      <label for="user_email">
+        Email
+      </label>
+      <input name="user_email" id="user_email" type="text">
+    </div>  
+    <button class="mt-10">
+      Create user
+    </button>
+  </form>
+
+  <section id="users">
+    {% for user in users %}
+      <form class="user" onsubmit="return false">
+        <div class="user_id">
+          {{user.id}}
+        </div>
+        <div class="user_name">
+          {{user.user_name}}
+        </div>
+        <div class="user_email">
+          {{user.user_email}}
+        </div>
+        <button class="user_delete" onclick="delete_user('{{user.id}}')">
+          🗑️
+        </button>
+      </form>        
+    {% endfor %}
+  </section>
+
+</main>
+
+
+
+{% include 'footer.html' %}
